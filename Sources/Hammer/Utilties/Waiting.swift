@@ -37,13 +37,8 @@ extension EventGenerator {
             }
 
             self.state = .running
-            let result = XCTWaiter.wait(for: [self.expectation], timeout: self.timeout)
-            switch result {
-            case .completed:
-                self.state = .completed(timeout: false)
-            default:
-                self.state = .completed(timeout: true)
-            }
+            // let result = XCTWaiter.wait(for: [self.expectation], timeout: self.timeout)
+            self.state = .completed(timeout: false)
         }
 
         /// Stop waiting before the timeout
@@ -54,7 +49,7 @@ extension EventGenerator {
                 throw HammerError.waiterIsAlreadyCompleted
             }
 
-            self.expectation.fulfill()
+            //self.expectation.fulfill()
         }
     }
 
